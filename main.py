@@ -1,6 +1,6 @@
 import cv2
 from video.source import open_video_source
-from video.processor import add_overplay
+from video.processor import add_overlay
 from video.stats import FPSCounter
 
 def main() -> None:
@@ -15,7 +15,7 @@ def main() -> None:
                 break
             frame_number += 1
             fps = fps_counter.update()
-            frame = add_overplay(frame, fps, frame_number)
+            frame = add_overlay(frame, fps, frame_number)
             cv2.imshow("Video Analysis", frame)
             if cv2.waitKey(1) & 0xFF == ord('q'):
                 break

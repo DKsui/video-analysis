@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-def add_overplay(
+def add_overlay(
     frame: np.ndarray,
     fps: float,
     frame_number: int,
