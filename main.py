@@ -23,7 +23,7 @@ def main() -> None:
         while True:
             success, frame = capture.read()
             if not success:
-                print("Could not read frame from video source.")
+                # print("Could not read frame from video source.")
                 break
             frame_number += 1
             fps = fps_counter.update()
