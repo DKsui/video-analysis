@@ -2,9 +2,21 @@ import cv2
 from video.source import open_video_source
 from video.processor import add_overlay
 from video.stats import FPSCounter
+import argparse
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Simple video analysis application.")
+    parser.add_argument("--source", default=0, help="Camera index or path to a video file. Default is 0 (the first camera).")
+    return parser.parse_args()
 
 def main() -> None:
-    capture = open_video_source(0)  # Open the default camera (index 0)
+    args = parse_args()
+    source: int | str
+    if args.source.isdigit():
+        source = int(args.source)
+    else:
+        source = args.source
+    capture = open_video_source(source)
     fps_counter = FPSCounter()
     frame_number = 0
     try:
